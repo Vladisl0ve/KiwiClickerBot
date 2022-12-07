@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using KiwiClickerBot.ViewModels;
+using KiwiClickerBot.Views;
 using System.Windows;
 
 namespace KiwiClickerBot
@@ -13,5 +9,14 @@ namespace KiwiClickerBot
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            MainWindowView window = new MainWindowView();
+            MainWindowViewModel mainWindowViewModel= new MainWindowViewModel();
+            window.DataContext= mainWindowViewModel;
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            window.Show();
+        }
     }
 }
